@@ -1,5 +1,6 @@
 import * as express from 'express';
 import LoginRoutes from './routes/login.routes';
+import 'express-async-errors';
 
 class App {
   public app: express.Express;
