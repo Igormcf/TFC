@@ -12,9 +12,9 @@ const options: object = {
 
 export default class LoginService {
   public loginUser = async (email: string, password: string) => {
-    const findUser = await UsersModel.findOne({ where: { email, password } });
+    const findUser = await UsersModel.findOne({ where: { email } });
 
-    if (findUser === null) {
+    if (!findUser) {
       return { statusCode: 400, result: { message: 'All fields must be filled' } };
     }
 
