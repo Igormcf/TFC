@@ -19,7 +19,7 @@ const validLogin = (req: Request, res: Response, next: NextFunction) => {
   if (error) {
     const [message] = error.details.map((e) => e.message);
 
-    return res.status(400).json({ message });
+    return res.status(401).json({ message });
   }
 
   return next();
