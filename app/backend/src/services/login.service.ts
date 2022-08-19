@@ -25,7 +25,7 @@ export default class LoginService {
 
     const payload = {
       email,
-      id: findUser.id,
+      role: findUser.role,
     };
 
     const token = jwt.sign(payload, secret, options);
