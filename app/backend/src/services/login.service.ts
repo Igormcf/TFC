@@ -1,8 +1,7 @@
 import * as bcryptjs from 'bcryptjs';
 import * as jwt from 'jsonwebtoken';
-/* import sequelize from '../database/models'; */
 import UsersModel from '../database/models/UsersModel';
-/* import ILogin from '../interfaces/login.interface'; */
+
 const secret = process.env.JWT_SECRET || 'jwt_secret';
 
 const options: object = {

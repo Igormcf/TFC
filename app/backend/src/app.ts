@@ -1,7 +1,6 @@
 import * as express from 'express';
 import LoginRoutes from './routes/login.routes';
 import 'express-async-errors';
-import validLogin from './middlewares/validLogin';
 
 class App {
   public app: express.Express;
@@ -26,7 +25,6 @@ class App {
     this.app.use(express.json());
     this.app.use(accessControl);
 
-    this.app.use(validLogin);
     this.app.use(LoginRoutes);
   }
 
