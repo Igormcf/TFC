@@ -9,9 +9,10 @@ const loginDTO = Joi.object({
   password: Joi.string().required().empty(),
 }).messages({
   'any.required': MESSAGE_JOI2,
+  'string.empty': MESSAGE_JOI2,
 /*  'string.base': MESSAGE_JOI,
   'string.email': MESSAGE_JOI,
-  'string.empty': MESSAGE_JOI, */
+  ' */
 });
 
 const validLogin = (req: Request, res: Response, next: NextFunction) => {
