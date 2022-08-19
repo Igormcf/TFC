@@ -14,7 +14,7 @@ export default class LoginService {
     const findUser = await UsersModel.findOne({ where: { email } });
 
     if (!findUser) {
-      return { statusCode: 400, result: { message: 'All fields must be filled' } };
+      return { statusCode: 401, result: { message: 'Incorrect email or password' } };
     }
 
     const descriptPassword = bcryptjs.compareSync(password, findUser.password);
