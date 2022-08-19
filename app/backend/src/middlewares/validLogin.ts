@@ -19,7 +19,6 @@ const validLogin = (req: Request, res: Response, next: NextFunction) => {
 
   if (error) {
     const [message] = error.details.map((e) => e.message);
-
     return error.details[0].message.includes('All') ? res.status(400).json({ message })
       : res.status(401).json({ message });
   }
