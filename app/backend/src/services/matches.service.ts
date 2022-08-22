@@ -1,7 +1,7 @@
-/* import { Op } from 'sequelize'; */
 import MatchesModel from '../database/models/MatchesModel';
 import IResult from '../interfaces/result.interface';
 import Teams from '../database/models/TeamsModel';
+import INewMatches from '../interfaces/newMatches.interface';
 
 export default class MatchesService {
   public getAllMatches = async (): Promise<IResult> => {
@@ -41,5 +41,16 @@ export default class MatchesService {
     });
 
     return { statusCode: 200, result: allQueryMatches };
+  };
+
+  public createMatches = async ({
+    homeTeam,
+    awayTeam,
+    homeTeamGoals,
+    awayTeamGoals }: INewMatches): Promise<IResult> => {
+    const newMatches = await MatchesModel
+      .create({ homeTeam, awayTeam, homeTeamGoals, awayTeamGoals, inProgress: true });
+
+    return { statusCode: 201, result: newMatches };
   };
 }
