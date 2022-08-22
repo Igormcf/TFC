@@ -18,11 +18,9 @@ const validToken = async (
     const decodeToken = jwt.verify(token, secret);
     res.locals.user = decodeToken;
 
-    /* req.user = (decodeToken as IToken).role; */
-
     return next();
   } catch (err) {
-    return res.status(401).json({ message: 'Invalid token' });
+    return res.status(401).json({ message: 'Token must be a valid token' });
   }
 };
 
