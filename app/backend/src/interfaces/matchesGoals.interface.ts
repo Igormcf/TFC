@@ -1,5 +1,5 @@
 interface IGoalsMatches {
-  id: number;
+  id: string;
   homeTeamGoals: number;
   awayTeamGoals: number;
 }
