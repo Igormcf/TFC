@@ -37,6 +37,7 @@ export default class MatchesController {
   public updateGoalsMatches = async (req: Request, res: Response) => {
     const { idParam } = req.params;
     const id = Number(idParam);
+
     const { homeTeamGoals, awayTeamGoals } = req.body;
 
     const { statusCode, result } = await this.matchesService
