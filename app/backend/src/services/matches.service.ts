@@ -43,11 +43,26 @@ export default class MatchesService {
     return { statusCode: 200, result: allQueryMatches };
   };
 
+  public findTeams = async (id: number) => Teams.findOne({ where: { id } });
+
   public createMatches = async ({
     homeTeam,
     awayTeam,
     homeTeamGoals,
     awayTeamGoals }: INewMatches): Promise<IResult> => {
+    const findTeamHome = await this.findTeams(homeTeam);
+    const findTeamAway = await this.findTeams(awayTeam);
+
+    if (findTeamHome === null || findTeamAway === null) {
+      return { statusCode: 404,
+        result: { message: 'There is no team with such id!' } };
+    }
+
+    if (homeTeam === awayTeam) {
+      return { statusCode: 401,
+        result: { message: 'It is not possible to create a match with two equal teams' } };
+    }
+
     const newMatches = await MatchesModel
       .create({ homeTeam, awayTeam, homeTeamGoals, awayTeamGoals, inProgress: true });
 
