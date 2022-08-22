@@ -53,4 +53,10 @@ export default class MatchesService {
 
     return { statusCode: 201, result: newMatches };
   };
+
+  public updateMatches = async (id: number): Promise<IResult> => {
+    await MatchesModel.update({ inProgress: false }, { where: { id } });
+
+    return { statusCode: 200, result: { message: 'Finished' } };
+  };
 }
