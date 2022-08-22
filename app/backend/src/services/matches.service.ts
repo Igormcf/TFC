@@ -2,6 +2,7 @@ import MatchesModel from '../database/models/MatchesModel';
 import IResult from '../interfaces/result.interface';
 import Teams from '../database/models/TeamsModel';
 import INewMatches from '../interfaces/newMatches.interface';
+import IGoalsMatches from '../interfaces/matchesGoals.interface';
 
 export default class MatchesService {
   public getAllMatches = async (): Promise<IResult> => {
@@ -73,5 +74,15 @@ export default class MatchesService {
     await MatchesModel.update({ inProgress: false }, { where: { id } });
 
     return { statusCode: 200, result: { message: 'Finished' } };
+  };
+
+  public updateGoalsMatches = async ({
+    id,
+    homeTeamGoals,
+    awayTeamGoals }: IGoalsMatches): Promise<IResult> => {
+    await MatchesModel
+      .update({ homeTeamGoals, awayTeamGoals }, { where: { id } });
+
+    return { statusCode: 200, result: { message: 'Updated match' } };
   };
 }
