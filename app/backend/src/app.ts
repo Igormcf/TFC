@@ -2,6 +2,7 @@ import * as express from 'express';
 import LoginRoutes from './routes/login.routes';
 import TeamsRoutes from './routes/teams.routes';
 import MatchesRoutes from './routes/matches.routes';
+import LoaderboardRoutes from './routes/leaderboard.routes';
 import 'express-async-errors';
 
 class App {
@@ -30,6 +31,7 @@ class App {
     this.app.use(LoginRoutes);
     this.app.use(TeamsRoutes);
     this.app.use(MatchesRoutes);
+    this.app.use(LoaderboardRoutes);
   }
 
   public start(PORT: string | number):void {
