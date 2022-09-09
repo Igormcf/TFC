@@ -51,3 +51,4 @@ Por fim, a API criada atua no gerenciamento de dados sobre partidas e classifica
   
   A aplicação Back-End estará disponível na porta informada na variável de ambiente `APP_PORT` do arquivo `.env`.
 </details>
+
